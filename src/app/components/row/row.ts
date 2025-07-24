@@ -23,10 +23,10 @@ export class Row implements AfterViewInit {
 
   showLeftButton = signal(false);
   showRightButton = signal(false);
-  scrollAmount = 500; // Increased scroll amount for more movement
+  scrollAmount = 500;
 
   ngAfterViewInit() {
-    // Add a small delay to ensure the container is properly rendered
+    // Initial visibility
     setTimeout(() => {
       this.updateButtonVisibility();
     }, 100);
@@ -35,7 +35,6 @@ export class Row implements AfterViewInit {
       this.updateButtonVisibility();
     });
 
-    // Also update on resize to handle dynamic content
     window.addEventListener('resize', () => {
       this.updateButtonVisibility();
     });
@@ -63,10 +62,10 @@ export class Row implements AfterViewInit {
     const container = this.cardContainer().nativeElement;
     const { scrollLeft, scrollWidth, clientWidth } = container;
 
-    // Show left button if we can scroll left (more than 1px to avoid floating point issues)
+    // Show left button if we can scroll left
     this.showLeftButton.set(scrollLeft > 1);
 
-    // Show right button if we can scroll right (with tolerance for floating point precision)
+    // Show right button if we can scroll right
     const maxScrollLeft = scrollWidth - clientWidth;
     this.showRightButton.set(scrollLeft < maxScrollLeft - 1);
   }
