@@ -30,6 +30,34 @@ Once the server is running, open your browser and navigate to `http://localhost:
 
 - Only vertical portraits
 - Removed MyFrenchFestival despite it being a highTimeline = TRUE
-- Implemented a simple search function
+- Implemented a simple search function with pipe
+- Implementation of Angular 20 approach
+- Used placeholder "Image Not Found" from Wikimedia
 
 ## 🗺️ - Structure
+
+```
+err_project/
+├── src/
+│   ├── app/
+│   │   ├── components/
+│   │   │   ├── search-bar/             # Search bar component
+│   │   │   ├── card/                   # Show image cards
+│   │   │   └── row/                    # Horizontal scrolling rows
+│   │   ├── home/
+│   │   │   ├── home.ts                 # Main page logic
+│   │   │   └── home.html               # Main page template
+│   │   ├── pipes/
+│   │   │   ├── search-pipe.ts          # Search filter pipe
+│   │   │   └── section-filter-pipe.ts  # Section filter pipe
+│   │   ├── services/
+│   │   │   └── connection-service.ts   # Jupiter API service
+│   │   ├── types/
+│   │   │   ├── api.types.ts            # API response types
+│   │   │   └── show.types.ts           # Show model types
+│   │   ├── app.ts                      # Root app component
+│   │   └── app.html                    # App template
+│   └── app.css                         # Global styles
+│
+└── README.md                           # Project documentation
+```
