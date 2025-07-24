@@ -5,3 +5,37 @@
   font-size: 2rem;
   font-weight: bold;
 }
+
+.search-loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.search-loading p {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #888;
+}
+
+.no-results {
+  text-align: center;
+  padding: 80px 20px;
+  color: white;
+}
+
+.no-results h2 {
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+  color: white;
+  font-weight: 600;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.no-results p {
+  font-size: 1.1rem;
+  color: white;
+  opacity: 0.9;
+  font-weight: 400;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

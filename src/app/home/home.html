@@ -4,8 +4,15 @@
 <div class="error-message">{{ error() }}</div>
 } @else {
 <ul>
-  @for (section of sections() | sectionFilter; track $index) {
-  <app-row [section]="section"></app-row>
+  @for (section of sections() | searchFilter: searchQuery() | sectionFilter; track $index) { 
+    @if (section.data.length > 0) {
+      <app-row [section]="section"></app-row>
+    } @else {
+      <div class="no-results">
+        <h2>{{ section.header }}</h2>
+        <p>Proovige otsida midagi muud või kontrollige õigekirja.</p>
+      </div>
+    } 
   }
 </ul>
 }

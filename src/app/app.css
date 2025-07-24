@@ -4,3 +4,59 @@ body, :host {
     background: linear-gradient(135deg, #fffbe6 0%, #ffe9b3 50%, #fff7cc 100%);
     background-attachment: fixed;
 }
+
+.app-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 16px 24px;
+}
+
+.app-title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #274690;
+    text-transform: capitalize;
+}
+
+.header-search {
+    max-width: 400px;
+    margin-right: 0;
+}
+
+.app-main {
+    padding-top: 80px;
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px 20px;
+    }
+    
+    .header-search {
+        width: 100%;
+        max-width: none;
+        margin-left: 0;
+    }
+    
+    .app-title {
+        font-size: 1.25rem;
+    }
+}
