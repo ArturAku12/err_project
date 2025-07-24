@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { ConnectionService } from '../services/connection-service';
 import { SectionFilterPipe } from '../pipes/section-filter-pipe';
 import { Row } from '../components/row/row';
+import { Section } from '../types/api.types';
 
 @Component({
   selector: 'app-home',
@@ -11,11 +12,21 @@ import { Row } from '../components/row/row';
 })
 export class Home {
   connectionService = inject(ConnectionService);
-  sections = signal<any[]>([]);
+  isLoading = signal(true);
+  sections = signal<Section[]>([]);
+  error = signal<string | null>(null);
+
   ngOnInit() {
-    this.connectionService.getData().subscribe((data) => {
-      this.sections.set(data.data.category.frontPage || []);
-      console.log('Sections:', this.sections());
+    this.connectionService.getData().subscribe({
+      next: (data) => {
+        this.sections.set(data.data.category.frontPage || []);
+        this.isLoading.set(false);
+      },
+      error: (error) => {
+        this.error.set('Failed to load data');
+        this.isLoading.set(false);
+        console.error('Error fetching data:', error);
+      },
     });
   }
 }

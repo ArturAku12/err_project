@@ -1,8 +1,35 @@
 <div class="row-container">
   <h2>{{ section().header }}</h2>
-  <div class="card-container">
-    @for (show of section().data; track show.id) {
-    <app-card [show]="show"></app-card>
-    }
+  <div class="card-scroll-wrapper">
+    <!-- Left scroll button -->
+    <button
+      class="scroll-button scroll-button-left"
+      [class.visible]="showLeftButton()"
+      (click)="scrollLeft()"
+      aria-label="Scroll left"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+      </svg>
+    </button>
+
+    <!-- Card container -->
+    <div class="card-container" #cardContainer>
+      @for (show of section().data; track show.id) {
+      <app-card [show]="show"></app-card>
+      }
+    </div>
+
+    <!-- Right scroll button -->
+    <button
+      class="scroll-button scroll-button-right"
+      [class.visible]="showRightButton()"
+      (click)="scrollRight()"
+      aria-label="Scroll right"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+      </svg>
+    </button>
   </div>
 </div>

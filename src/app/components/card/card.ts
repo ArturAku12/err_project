@@ -1,4 +1,5 @@
-import { Component, input, OnInit } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { Show } from '../../types/show.types';
 
 @Component({
   selector: 'app-card',
@@ -7,35 +8,18 @@ import { Component, input, OnInit } from '@angular/core';
   templateUrl: './card.html',
   styleUrl: './card.css',
 })
-export class Card implements OnInit {
-  show = input<any>({});
+export class Card {
+  show = input.required<Show>();
 
-  backgroundColor = '';
-
-  private backgroundColors = [
-    '#e50914',
-    '#b20710',
-    '#461220',
-    '#f5f5f1',
-    '#141414',
-    '#221f1f',
-  ];
-
-  ngOnInit(): void {
-    this.backgroundColor = this.getRandomBackgroundColor();
-  }
-
-  getOptimalPhotoUrl(): string {
-    if (
-      !this.show() ||
-      !this.show().verticalPhotos ||
-      !this.show().verticalPhotos[0]
-    ) {
-      return '';
+  getOptimalPhotoUrl() {
+    const show = this.show();
+    if (!show?.verticalPhotos?.[0]) {
+      return '/assets/images/placeholder.png'; // Create a fallback image.
     }
 
-    const photo = this.show().verticalPhotos[0];
+    const photo = show.verticalPhotos[0];
 
+    // Check if photoTypes exist and return the first available type.
     if (photo.photoTypes) {
       if (photo.photoTypes['80']) {
         return photo.photoTypes['80'].url;
@@ -45,12 +29,6 @@ export class Card implements OnInit {
       }
     }
 
-    // Fallback to the base URL
-    return photo.photoUrlBase;
-  }
-
-  private getRandomBackgroundColor(): string {
-    const index = Math.floor(Math.random() * this.backgroundColors.length);
-    return this.backgroundColors[index];
+    return photo.photoUrlBase || '';
   }
 }

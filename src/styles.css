@@ -9,5 +9,13 @@ html, body {
     padding: 0;
     height: 100%;
     width: 100%;
-    background: linear-gradient(to right, #fffaf0 0%, #fde5d5 100%);
+    background: linear-gradient(to right, #0a2342 0%, #274690 50%, #1b2845 100%);
+}
+
+/* Reset ul padding to make content stretch full width */
+ul {
+    padding-inline-start: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    list-style: none;
 }

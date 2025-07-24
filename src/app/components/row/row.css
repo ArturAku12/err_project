@@ -2,9 +2,125 @@
   margin-bottom: 20px;
 }
 
+.row-container h2 {
+  padding-left: 20px; /* Match the card container left padding */
+  padding-top: 15px; /* Add top padding for breathing room */
+  margin: 0 0 10px 0; /* Clean up default margins */
+  color: white;
+  font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+}
+
+.card-scroll-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
 .card-container {
   display: flex;
   gap: 10px;
   overflow-x: auto;
-  padding-bottom: 10px;
+  overflow-y: hidden;
+  padding: 0 20px 10px 20px; /* Add right padding to match left padding */
+  scroll-behavior: smooth;
+  /* Hide scrollbar */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
 }
+
+.card-container::-webkit-scrollbar {
+  display: none; /* WebKit */
+}
+
+.scroll-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.8);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  pointer-events: none; /* Disable interaction when hidden */
+}
+
+.scroll-button.visible {
+  opacity: 0; /* Still hidden by default, only show on row hover */
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.scroll-button-left {
+  left: 10px;
+}
+
+.scroll-button-right {
+  right: 10px;
+}
+
+/* Show buttons only on hover of the row container AND when they should be visible */
+.row-container:hover .scroll-button.visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto; /* Enable interaction when visible */
+}
+
+/* Button hover effect when visible */
+.row-container:hover .scroll-button.visible:hover {
+  background: rgba(0, 0, 0, 0.9);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Ensure svg icons don't interfere with button clicks */
+.scroll-button svg {
+  pointer-events: none;
+}
+
+/* Remove margin to let cards touch edges */
+.card-scroll-wrapper {
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .scroll-button {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .scroll-button-left {
+    left: 5px;
+  }
+  
+  .scroll-button-right {
+    right: 5px;
+  }
+  
+  .card-scroll-wrapper {
+    margin: 0;
+  }
+  
+  .card-container {
+    padding: 0 15px 10px 15px; /* Symmetric padding on mobile */
+  }
+  
+  .row-container h2 {
+    padding-left: 15px; /* Match mobile card container padding */
+    font-size: 1.3rem; /* Slightly smaller on mobile */
+  }
+}
+
