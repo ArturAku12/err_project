@@ -7,7 +7,10 @@ import { Section } from '../types/api.types';
 export class SectionFilterPipe implements PipeTransform {
   transform(sections: Section[]): Section[] {
     return sections.filter(
-      (section) => section.highTimeline === true && section.header !== ''
+      (section) =>
+        section.highTimeline === true &&
+        section.header !== '' &&
+        section.header !== 'MyFrenchFilmFestival'
     );
   }
 }

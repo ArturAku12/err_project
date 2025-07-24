@@ -1,5 +1,11 @@
+@if (isLoading()) {
+<app-load-spinner />
+} @else if (error()) {
+<div class="error-message">{{ error() }}</div>
+} @else {
 <ul>
   @for (section of sections() | sectionFilter; track $index) {
   <app-row [section]="section"></app-row>
   }
 </ul>
+}
