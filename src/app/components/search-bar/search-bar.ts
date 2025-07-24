@@ -1,26 +1,24 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { Component, output, signal } from '@angular/core';
 
 @Component({
   selector: 'app-search-bar',
-  imports: [FormsModule, CommonModule],
+  imports: [],
   templateUrl: './search-bar.html',
   styleUrl: './search-bar.css',
 })
 export class SearchBar {
-  searchQuery: string = '';
+  searchQuery = signal('');
 
-  @Output() searchChange = new EventEmitter<string>();
+  searchChange = output<string>();
 
   onSearchInput(event: Event): void {
     const target = event.target as HTMLInputElement;
-    this.searchQuery = target.value;
-    this.searchChange.emit(this.searchQuery);
+    this.searchQuery.set(target.value);
+    this.searchChange.emit(target.value);
   }
 
   clearSearch(): void {
-    this.searchQuery = '';
+    this.searchQuery.set('');
     this.searchChange.emit('');
   }
 }
