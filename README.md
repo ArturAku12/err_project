@@ -4,7 +4,9 @@
 
 ## 🚀 - Quick Start
 
-To start a local development server, run:
+### Prerequisites
+
+- Angular CLI
 
 ```bash
 ng serve
