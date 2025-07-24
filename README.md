@@ -7,6 +7,7 @@
 ### Prerequisites
 
 - Angular CLI
+- Up-to-date Node and NPM
 
 ```bash
 npm install
