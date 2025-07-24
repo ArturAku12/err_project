@@ -1,5 +1,6 @@
 <ul>
   @for (section of sections() | sectionFilter; track $index) {
-  <li>{{ section.header }}</li>
+
+  <app-row [section]="section"></app-row>
   }
 </ul>

@@ -1,1 +1,9 @@
-<p>card works!</p>
+<div class="card" [style.backgroundColor]="backgroundColor">
+  <div class="card-image-container">
+    <img
+      class="card-image"
+      [src]="getOptimalPhotoUrl()"
+      alt="{{ show().heading }}"
+    />
+  </div>
+</div>

@@ -1,1 +1,8 @@
-<p>row works!</p>
+<div class="row-container">
+  <h2>{{ section().header }}</h2>
+  <div class="card-container">
+    @for (show of section().data; track show.id) {
+    <app-card [show]="show"></app-card>
+    }
+  </div>
+</div>
