@@ -1,1 +1,5 @@
-<p>home works!</p>
+<ul>
+  @for (section of sections() | sectionFilter; track $index) {
+  <li>{{ section.header }}</li>
+  }
+</ul>
