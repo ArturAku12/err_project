@@ -9,6 +9,7 @@
 - Angular CLI
 
 ```bash
+npm install
 ng serve
 ```
 
